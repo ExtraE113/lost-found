@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Add a lost/found item</title>
+	<meta charset="UTF-8">
+	<title>Add a lost/found item</title>
 </head>
 <body>
 <!--link google firebase code start-->
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAt9rOFjgf2zkhKllDZHLkjG81aZu42ioY",
-        authDomain: "lost-found-222603.firebaseapp.com",
-        databaseURL: "https://lost-found-222603.firebaseio.com",
-        projectId: "lost-found-222603",
-        storageBucket: "lost-found-222603.appspot.com",
-        messagingSenderId: "707419831050"
-    };
-    firebase.initializeApp(config);
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyAt9rOFjgf2zkhKllDZHLkjG81aZu42ioY",
+		authDomain: "lost-found-222603.firebaseapp.com",
+		databaseURL: "https://lost-found-222603.firebaseio.com",
+		projectId: "lost-found-222603",
+		storageBucket: "lost-found-222603.appspot.com",
+		messagingSenderId: "707419831050"
+	};
+	firebase.initializeApp(config);
 </script>
 <!--link google firebase end-->
 <script>
-    var database = firebase.database();
-    function writeItemData(imgLink, cardTitle, cardContent) {
-        database.ref('items/found/3').set({
-            "img-link": imgLink,
-            "card-title": cardTitle,
-            "card-content" : cardContent
-        });
-    }
-    writeItemData("https://www.incimages.com/uploaded_files/image/970x450/getty_883231284_200013331818843182490_335833.jpg", "another book 2", "a picture of a book");
-    database.ref('items/').once('value', function(snap){
-        console.log(JSON.stringify(snap.val()))
-    })
+	var database = firebase.database();
+	function writeItemData(imgLink, cardTitle, cardContent) {
+		database.ref('items/found/3').set({
+			"img-link": imgLink,
+			"card-title": cardTitle,
+			"card-content" : cardContent
+		});
+	}
+	writeItemData("https://www.incimages.com/uploaded_files/image/970x450/getty_883231284_200013331818843182490_335833.jpg", "another book 2", "a picture of a book");
+	database.ref('items/').once('value', function(snap){
+		console.log(JSON.stringify(snap.val()))
+	})
 </script>
 </body>
 </html>
