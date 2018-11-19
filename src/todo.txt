@@ -1,5 +1,4 @@
 TODO add documentation
-TODO move JS to it's own file. Use fewer <script> tags.
 TODO implement report
 TODO implement add new
 TODO separate pages for lost items and found items

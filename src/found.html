@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="custom.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script src="http://localhost:63342/lostfound/src/apiHandler.js"></script>
 </head>
 <body>
 <nav>
@@ -23,70 +24,29 @@
 </nav>
 <div class="static-content">
     <h4>Things that people have found & thoughtfully posted here.</h4>
+    <br><br>
     <div class="row">
         <!--cards will be set to the div-->
-
-        <div id="content"></div>
-        <!--link google firebase code start-->
-        <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyAt9rOFjgf2zkhKllDZHLkjG81aZu42ioY",
-                authDomain: "lost-found-222603.firebaseapp.com",
-                databaseURL: "https://lost-found-222603.firebaseio.com",
-                projectId: "lost-found-222603",
-                storageBucket: "lost-found-222603.appspot.com",
-                messagingSenderId: "707419831050"
-            };
-            firebase.initializeApp(config);
-        </script>
-        <!--link google firebase end-->
-        <script>
-            var jsonString;
-            firebase.database().ref('items/').once('value', function (snap) {
-                jsonString = JSON.stringify(snap.val())
-               injectHTML();
-
-            });
-            /*var jsonString ='{ "items" : [' +
-                '{ "img-link":"https://c.pxhere.com/photos/c6/a9/monty_pet_buddy_cat_chum-96028.jpg!d" , "card-title":"a card", "card-content":"a card content"},' +
-                '{ "img-link":"https://s7d2.scene7.com/is/image/PetSmart/5251722?$pdp-placeholder-desktop$" , "card-title":"a card 6",  "card-content":"a picture of a fish" },' +
-                '{ "img-link":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2010-brown-bear.jpg/200px-2010-brown-bear.jpg" , "card-title":"a card 2", "card-content":"a picture of a bear" },' +
-                '{ "img-link":"https://upload.wikimedia.org/wikipedia/commons/4/46/Bear_Alaska_%283%29.jpg" , "card-title":"a card 3" , "card-content":"a picture of another bear"} ]}';
-                */
-            function injectHTML() {
-                console.log(jsonString);
-                var itemObj = JSON.parse(jsonString);
-                var htmlTemplate = '<div class="col s12 m4">\n' +
-                    '            <div class="card medium">\n' +
-                    '                <div class="card-image">\n' +
-                    '                    <img src="img-link-js-reserved">\n' +
-                    '                    <span class="card-title">card-title-js-reserved</span>\n' +
-                    '                </div>\n' +
-                    '                <div class="card-content">\n' +
-                    '                    <p>card-content-js-reserved</p>\n' +
-                    '                </div>\n' +
-                    '                <div class="card-action">\n' +
-                    '                    <a href="#">View Comments</a>\n' +
-                    '                    <a href="#">Report</a>\n' +
-                    '                </div>\n' +
-                    '            </div>\n' +
-                    '        </div>';
-                var htmlOut = htmlTemplate.repeat(itemObj.found.length);
-                for (var key in itemObj.found) {
-                    var v = Object.entries(itemObj.found[key]);
-                    for (var key2 in v) {
-                        var goalString = v[key2][0] + "-js-reserved";
-                        htmlOut = htmlOut.replace(goalString, v[key2][1]);
-                    }
-                }
-                document.getElementById("content").innerHTML = htmlOut;
-            }
-
-        </script>
-
+        <div id="content">
+            <div class="center-align">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-red-only">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>readFirebase()</script>
+</div>
 
 </div>
 
