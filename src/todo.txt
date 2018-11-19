@@ -4,3 +4,4 @@ TODO implement comments
 TODO add footer
 TODO firebase security
 TODO Imgur api
+TODO custom 404 page
