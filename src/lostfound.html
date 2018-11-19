@@ -15,6 +15,17 @@
 <div class="static-content">
     <h4>Things that people have found & thoughtfully posted here.</h4>
     <br><br>
+    <div class="row" onclick="readFirebase(document.getElementById('isLost').checked)">
+        <div class="switch">
+            <label>
+                Lost
+                <input type="checkbox" id="isLost">
+                <span class="lever"></span>
+                Found
+            </label>
+        </div>
+    </div>
+    <br><br>
     <div class="row">
         <!--cards will be set to the div-->
         <div id="content">
@@ -35,7 +46,7 @@
             </div>
         </div>
     </div>
-    <script>readFirebase()</script>
+    <script>readFirebase(false)</script>
 </div>
 
 <script>includeHTML()</script>

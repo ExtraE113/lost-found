@@ -37,7 +37,17 @@
                     <label for="description" class="active">Description</label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" onclick="writeItemData('https://cdn.morphsuits.co.uk/media/catalog/product/c/r/crash-test-dummy-morphsuit-1-us.1500038359.jpg', document.getElementById('title').value, document.getElementById('description').value)" name="action">Submit</button>
+            <div class="row">
+                <div class="switch">
+                    <label>
+                        Lost
+                        <input type="checkbox" id="isLost">
+                        <span class="lever"></span>
+                        Found
+                    </label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" onclick="writeItemData('https://cdn.morphsuits.co.uk/media/catalog/product/c/r/crash-test-dummy-morphsuit-1-us.1500038359.jpg', document.getElementById('title').value, document.getElementById('description').value, document.getElementById('isLost').checked)">Submit</button>
         </form>
     </div>
 </div>

@@ -1,8 +1,6 @@
 TODO add documentation
 TODO implement report
 TODO implement comments
-TODO implement add new
-TODO separate pages for lost items and found items
 TODO add footer
 TODO firebase security
 TODO Imgur api
