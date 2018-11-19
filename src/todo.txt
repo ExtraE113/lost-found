@@ -6,3 +6,4 @@ TODO separate pages for lost items and found items
 TODO add footer
 TODO add consistent header/footer code that can be changed in one place
 TODO firebase security
+TODO Imgur api
