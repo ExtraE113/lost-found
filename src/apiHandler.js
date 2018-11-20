@@ -43,7 +43,7 @@ function htmlInjector(snap, gettingLost) {
             '                </div>\n' +
             '                <div class="card-action">\n' +
             '                    <a href="#">View Comments</a>\n' +
-            '                    <a href="#">Report</a>\n' +
+            '                    <a href="report-link-constant">Report</a>\n' +
             '                </div>\n' +
             '            </div>\n' +
             '        </div>'/*endregion*/;
@@ -53,6 +53,7 @@ function htmlInjector(snap, gettingLost) {
             for (let target in cardData) {
                 htmlOut = htmlOut.replace(target + "-js-reserved", cardData[target])
             }
+            //hmlOut = htmlOut.replace("report-link-constant", cardData[])
         }
     }
     document.getElementById("content").innerHTML = htmlOut;
@@ -76,15 +77,15 @@ function writeItemData(imgLinkPromise, cardTitle, cardContent, userFoundItem) {
         "                    </div>\n" +
         "                </div>\n" +
         "            </div>"/*endregion*/;
-    let randID = Math.random().toString(36).replace(/[^a-z]+/g, '');
-    //rather than check if the key is used we just accept the very small odds that it is in use. Simplifies logic.
     let path = "";
     if (userFoundItem)
         path = 'items/found/';
     else
         path = 'items/lost/';
     imgLinkPromise.then(function (link) {
-        database.ref(path + randID).set({
+        var a = link.split("/");
+        console.log(a);
+        database.ref(path + a.pop().split(".")[0]).set({
             "img-link":link,
             "card-title": cardTitle,
             "card-content": cardContent
