@@ -1,6 +1,5 @@
 TODO add documentation
 TODO implement report
 TODO implement comments
-TODO add footer
 TODO firebase security
 TODO custom 404 page
