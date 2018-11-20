@@ -13,6 +13,8 @@
 <body>
 <div w3-include-html="header.html"></div>
 <div class="static-content">
+    <div class="center-align hide" id="loading"></div>
+    </div>
     <div class="row">
         <form class="col s12">
             <div class="row">
@@ -47,12 +49,12 @@
                     </label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light"
-                    onclick="writeItemData(upload(document.getElementById('file').files[0]), document.getElementById('title').value, document.getElementById('description').value, document.getElementById('isLost').checked)">
-                Submit
-            </button>
         </form>
     </div>
+    <button class="btn waves-effect waves-light"
+            onclick="writeItemData(upload(document.getElementById('file').files[0]), document.getElementById('title').value, document.getElementById('description').value, document.getElementById('isLost').checked)">
+        Submit
+    </button>
 </div>
 <script>includeHTML()</script>
 <script>

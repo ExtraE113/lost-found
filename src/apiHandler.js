@@ -60,6 +60,22 @@ function htmlInjector(snap, gettingLost) {
 
 
 function writeItemData(imgLinkPromise, cardTitle, cardContent, userFoundItem) {
+    document.getElementById('loading').className = "center-align";
+    document.getElementById('loading').innerHTML = /*region loading*/"<div class=\"center-align\">\n" +
+        "                <div class=\"preloader-wrapper big active\">\n" +
+        "                    <div class=\"spinner-layer spinner-red-only\">\n" +
+        "                        <div class=\"circle-clipper left\">\n" +
+        "                            <div class=\"circle\"></div>\n" +
+        "                        </div>\n" +
+        "                        <div class=\"gap-patch\">\n" +
+        "                            <div class=\"circle\"></div>\n" +
+        "                        </div>\n" +
+        "                        <div class=\"circle-clipper right\">\n" +
+        "                            <div class=\"circle\"></div>\n" +
+        "                        </div>\n" +
+        "                    </div>\n" +
+        "                </div>\n" +
+        "            </div>"/*endregion*/;
     let randID = Math.random().toString(36).replace(/[^a-z]+/g, '');
     //rather than check if the key is used we just accept the very small odds that it is in use. Simplifies logic.
     let path = "";
@@ -68,12 +84,12 @@ function writeItemData(imgLinkPromise, cardTitle, cardContent, userFoundItem) {
     else
         path = 'items/lost/';
     imgLinkPromise.then(function (link) {
-
         database.ref(path + randID).set({
             "img-link":link,
             "card-title": cardTitle,
             "card-content": cardContent
         });
+        document.getElementById('loading').innerHTML = "<h4>Submission sucess!</h4>";
     });
 }
 
