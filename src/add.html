@@ -23,7 +23,7 @@
                 <div class="file-field input-field col s6">
                     <div class="btn">
                         <span>Upload Picture</span>
-                        <input type="file" accept="image/*">
+                        <input type="file" accept="image/*" id="file">
                     </div>
                     <div class="file-path-wrapper">
                         <input class="file-path validate" type="text">
@@ -47,7 +47,7 @@
                     </label>
                 </div>
             </div>
-            <button class="btn waves-effect waves-light" onclick="writeItemData('https://cdn.morphsuits.co.uk/media/catalog/product/c/r/crash-test-dummy-morphsuit-1-us.1500038359.jpg', document.getElementById('title').value, document.getElementById('description').value, document.getElementById('isLost').checked)">Submit</button>
+            <button class="btn waves-effect waves-light" onclick="writeItemData(upload(document.getElementById('file').files[0]), document.getElementById('title').value, document.getElementById('description').value, document.getElementById('isLost').checked)">Submit</button>
         </form>
     </div>
 </div>

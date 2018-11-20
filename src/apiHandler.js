@@ -59,7 +59,7 @@ function htmlInjector(snap, gettingLost) {
 }
 
 
-function writeItemData(imgLink, cardTitle, cardContent, userFoundItem) {
+function writeItemData(imgLinkPromise, cardTitle, cardContent, userFoundItem) {
     let randID = Math.random().toString(36).replace(/[^a-z]+/g, '');
     //rather than check if the key is used we just accept the very small odds that it is in use. Simplifies logic.
     let path = "";
@@ -67,9 +67,37 @@ function writeItemData(imgLink, cardTitle, cardContent, userFoundItem) {
         path = 'items/found/';
     else
         path = 'items/lost/';
-    database.ref(path + randID).set({
-        "img-link": imgLink,
-        "card-title": cardTitle,
-        "card-content": cardContent
+    imgLinkPromise.then(function (link) {
+
+        database.ref(path + randID).set({
+            "img-link":link,
+            "card-title": cardTitle,
+            "card-content": cardContent
+        });
+    });
+}
+
+//Imgur api
+
+
+function upload(file) {
+    return new Promise(function (resolve, reject) {
+        if (!file || !file.type.match(/image.*/)) reject("file uploaded was not an image");
+        var fd = new FormData();
+        fd.append("image", file);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://api.imgur.com/3/image"); // Boooom!
+        xhr.setRequestHeader("Authorization", "Client-ID 6fb6d927f7fe0db");
+        xhr.onload = function () {
+            let reply = JSON.parse(xhr.response);
+            if (reply.success) {
+                console.log("here");
+                resolve(reply.data.link);
+            }
+            else
+                reject(reply)
+
+        };
+        xhr.send(fd);
     });
 }
